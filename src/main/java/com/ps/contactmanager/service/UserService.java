@@ -7,8 +7,8 @@ import com.ps.contactmanager.domain.User;
 import com.ps.contactmanager.domain.view.UserView;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 public interface UserService {
 
@@ -24,9 +24,6 @@ public interface UserService {
 
     AuthenticationResponse authentication(AuthenticationRequest authenticationRequest,
                                           HttpServletRequest request, HttpServletResponse response) ;
-
-
-
 
 
 }

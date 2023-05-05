@@ -1,8 +1,8 @@
 package com.ps.contactmanager.validation;
 
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 public class ValidPasswordValidator implements ConstraintValidator<ValidPassword, String> {
 

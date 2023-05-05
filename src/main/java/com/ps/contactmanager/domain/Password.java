@@ -3,7 +3,7 @@ package com.ps.contactmanager.domain;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
 
 
 @Entity
