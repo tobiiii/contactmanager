@@ -27,6 +27,12 @@ public interface UserService {
 
     AuthenticationResponse authentication(AuthenticationRequest authenticationRequest,
                                           HttpServletRequest request, HttpServletResponse response) ;
+
+    User checkEmail(String email);
+
+    User getConnectedUser() ;
+
+
 }
 
 

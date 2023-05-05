@@ -6,39 +6,68 @@ import com.ps.contactmanager.domain.DTO.UserDto;
 import com.ps.contactmanager.domain.Password;
 import com.ps.contactmanager.domain.Profile;
 import com.ps.contactmanager.domain.User;
+import com.ps.contactmanager.domain.Privilege;
 import com.ps.contactmanager.domain.enums.ERROR_CODE;
 import com.ps.contactmanager.domain.view.UserView;
 import com.ps.contactmanager.exceptions.ValidationException;
 import com.ps.contactmanager.repository.SecurityCustomizationRepository;
 import com.ps.contactmanager.repository.UserRepository;
+import com.ps.contactmanager.security.TokenProvider;
 import com.ps.contactmanager.security.WebSecurityConfig;
 import com.ps.contactmanager.service.ProfileService;
 import com.ps.contactmanager.service.UserService;
+import com.ps.contactmanager.service.UserSessionService;
+import com.ps.contactmanager.utils.ParamsProvider;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Collection;
+import java.util.stream.Collectors;
 
 
 @Service
 public class UserSrviceImpl implements UserService {
 
     @Autowired
-    private ProfileService profileService;
-
-    @Autowired
     private UserRepository userRepository;
 
     @Autowired
-    private SecurityCustomizationRepository securityCustomizationRepository;
+    private WebSecurityConfig webSecurityConfig;
 
     @Autowired
-    private WebSecurityConfig webSecurityConfig;
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private UserSessionService userSessionService;
+
+    @Autowired
+    private ParamsProvider paramsProvider;
+
+    @Autowired
+    private TokenProvider tokenProvider;
+
+    @Autowired
+    private ProfileService profileService;
+
+    @Autowired
+    private UserDetailsServiceImpl userDetailsServiceImpl;
+
+    @Autowired
+    SecurityCustomizationRepository securityCustomizationRepository;
 
 
 
@@ -109,7 +138,58 @@ public class UserSrviceImpl implements UserService {
     @Override
     public AuthenticationResponse authentication(AuthenticationRequest authenticationRequest,
                                                  HttpServletRequest request, HttpServletResponse response) {
-        return null;
+        User user = null;
+        try {
+            // 1 CHECK email
+            user = checkEmail(authenticationRequest.getEmail());
+            // 2 CHECK PWD
+            checkPassword(authenticationRequest.getPassword(), user);
+        } catch (ValidationException e) {
+            switch (ERROR_CODE.valueOf(e.getErrorCode())) {
+                case INCORRECT_PASSWORD:
+                case INCORRECT_EMAIL:
+                    throw new ValidationException(ERROR_CODE.INCORRECT_USERNAME_OR_PASSWORD);
+
+                default:
+                    throw e;
+            }
+        }
+
+        Collection<GrantedAuthority> authorities = user.getProfile().getPrivileges().stream()
+                .map(privilege -> new SimpleGrantedAuthority(privilege.getCode()))
+                .collect(Collectors.toSet());
+
+        Authentication auth = null;
+        try {
+            auth = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            authenticationRequest.getEmail(),
+                            authenticationRequest.getPassword(),
+                            authorities));
+            SecurityContextHolder.getContext().setAuthentication(auth);
+        } catch (final BadCredentialsException e) {
+            throw new ValidationException(ERROR_CODE.INCORRECT_USERNAME_OR_PASSWORD);
+        }
+        //        Map<String, String> claims = new HashMap<>(); //Optional
+        final String accessToken = tokenProvider.generateToken(user, null);
+
+        // Start admin session
+        userSessionService.startSession(request, accessToken, user);
+
+        //Get refresh token
+        final String idToken = tokenProvider.getIdFromToken(accessToken);
+
+        String redirectTo = user.getPassword().getIsTemporary() ? "RESET_PASSWORD" : "ADMIN";
+
+        Collection<String> privileges = user.getProfile().getPrivileges().stream()
+                .map(Privilege::getCode)
+                .collect(Collectors.toSet());
+
+        Long sessionDuration = paramsProvider.getTokenDuration() * 60;
+        String appBuildInfo = paramsProvider.getAppBuildInfo();
+
+        return new AuthenticationResponse(accessToken, idToken, redirectTo, sessionDuration, appBuildInfo,
+                new UserView(user), privileges);
     }
 
     public void checkPassword(String pwd , User user) throws ValidationException {
@@ -133,6 +213,25 @@ public class UserSrviceImpl implements UserService {
         user.getPassword().setIsTemporary(false);
         securityCustomizationRepository.save(user.getPassword());
     }
+
+
+    @Override
+    public User checkEmail(String email) throws ValidationException {
+        return userRepository.findByEmailAddressIgnoreCase(email)
+                .orElseThrow(() -> new ValidationException(ERROR_CODE.INCORRECT_EMAIL));
+    }
+
+    @Override
+    public User getConnectedUser() throws ValidationException {
+        var authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof UserDetailsImpl) {
+            UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+            return userDetails.getUser();
+        }
+
+        throw new ValidationException(ERROR_CODE.INVALID_SESSION);
+    }
+
 
 
 }
