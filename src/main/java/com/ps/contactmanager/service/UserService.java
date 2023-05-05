@@ -3,8 +3,10 @@ package com.ps.contactmanager.service;
 import com.ps.contactmanager.domain.DTO.AuthenticationRequest;
 import com.ps.contactmanager.domain.DTO.AuthenticationResponse;
 import com.ps.contactmanager.domain.DTO.UserDto;
+import com.ps.contactmanager.domain.Profile;
 import com.ps.contactmanager.domain.User;
 import com.ps.contactmanager.domain.view.UserView;
+import com.ps.contactmanager.exceptions.ValidationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,16 +18,16 @@ public interface UserService {
 
     UserView create(UserDto user) ;
 
+    boolean isProfileAttributed(Profile profile);
+
     User update(Long userId, UserDto user) ;
 
-    UserView findUserById(Long userId) ;
+    UserView findUserViewById(Long userId) ;
 
     void delete(Long userId) ;
 
     AuthenticationResponse authentication(AuthenticationRequest authenticationRequest,
                                           HttpServletRequest request, HttpServletResponse response) ;
-
-
 }
 
 
