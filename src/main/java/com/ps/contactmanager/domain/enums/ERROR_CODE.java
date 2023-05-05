@@ -55,12 +55,11 @@ public enum ERROR_CODE {
     }
 
     public String getMessage() {
-            return message;
+        return message;
     }
 
-    public String getMessageWithErrorCode(Object[] params) {
-
-            return name() + ":" + message;
+    public String getMessageWithErrorCode() {
+        return name() + ":" + message;
     }
 
 }
