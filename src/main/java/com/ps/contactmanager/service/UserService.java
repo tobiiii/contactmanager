@@ -6,7 +6,6 @@ import com.ps.contactmanager.domain.DTO.UserDto;
 import com.ps.contactmanager.domain.Profile;
 import com.ps.contactmanager.domain.User;
 import com.ps.contactmanager.domain.view.UserView;
-import com.ps.contactmanager.exceptions.ValidationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import jakarta.servlet.http.HttpServletRequest;
