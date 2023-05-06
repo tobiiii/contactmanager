@@ -1,6 +1,5 @@
 package com.ps.contactmanager.domain.DTO;
 
-import com.ps.contactmanager.domain.Profile;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,9 +29,4 @@ public class ProfileDto {
     @NotNull
     @Size(min = 1)
     private List<Long> privileges;
-
-    public ProfileDto(Profile profile) {
-        this.code = profile.getCode();
-        this.name = profile.getName();
-    }
 }
