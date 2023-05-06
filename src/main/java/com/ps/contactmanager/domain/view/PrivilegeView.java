@@ -18,14 +18,7 @@ public class PrivilegeView {
 
     private String code;
 
-    private Boolean status;
 
-    public PrivilegeView(Privilege privilege, Boolean status) {
-        this.id = privilege.getId();
-        this.description = privilege.getDescription();
-        this.status = status;
-        this.code = privilege.getCode();
-    }
 
     public PrivilegeView(Privilege privilege) {
         this.id = privilege.getId();

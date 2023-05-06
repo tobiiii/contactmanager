@@ -17,8 +17,8 @@ import java.util.Date;
 public abstract class CommonEntity {
 
     @Id
-    @SequenceGenerator(name = "pos_hibernate_sequence", sequenceName = "pos_hibernate_sequence", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pos_hibernate_sequence")
+    @SequenceGenerator(name = "cm_hibernate_sequence", sequenceName = "cm_hibernate_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cm_hibernate_sequence")
     private Long id;
 
     @CreatedDate
