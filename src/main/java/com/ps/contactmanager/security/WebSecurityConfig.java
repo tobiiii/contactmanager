@@ -5,7 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -40,6 +43,12 @@ public class WebSecurityConfig {
     }
 
     @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
+        return authConfig.getAuthenticationManager();
+    }
+
+
+    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         CorsConfiguration corsConfiguration = new CorsConfiguration();
@@ -54,6 +63,7 @@ public class WebSecurityConfig {
                 "/v2/api-docs/**",
                 "/swagger-resources/**",
                 "/api/auth/**",
+                "/h2-console/**",
         };
         http.cors().configurationSource(request -> corsConfiguration)
                 .and()
@@ -66,11 +76,13 @@ public class WebSecurityConfig {
                 .requestMatchers(WHITE_LIST).permitAll()
                 .requestMatchers(toH2Console()).permitAll()
                 .requestMatchers(HttpMethod.OPTIONS).permitAll()
+
                 .anyRequest().authenticated()
                 .and().httpBasic();
 
 
         http.csrf().disable();
+        http.headers().frameOptions().disable();
         http.authenticationProvider(authenticationProvider());
 
         // Custom JWT based security filter
