@@ -1,3 +1,11 @@
+CREATE SEQUENCE "CM_HIBERNATE_SEQUENCE"
+    MINVALUE 1
+    MAXVALUE 999999999
+    INCREMENT BY 1
+    START WITH 202700
+    NOCACHE
+    NOCYCLE;
+
 CREATE TABLE privilege
 (
     id          bigint                                              NOT NULL,
@@ -34,7 +42,7 @@ CREATE TABLE profiles_privileges
 );
 
 
-CREATE TABLE "user"
+CREATE TABLE user
 (
     id            bigint                                              NOT NULL,
     created       timestamp(6) without time zone,
@@ -63,11 +71,11 @@ CREATE TABLE security_customization
     CONSTRAINT security_customization_pkey PRIMARY KEY (id),
     CONSTRAINT uk_security_customization_user_id UNIQUE (user_id),
     CONSTRAINT fk_security_customization_user_id FOREIGN KEY (user_id)
-        REFERENCES "user" (id)
+        REFERENCES user (id)
 );
 
 
-CREATE TABLE usersession
+CREATE TABLE user_session
 (
     id          bigint  NOT NULL,
     created     timestamp(6) without time zone,
@@ -85,5 +93,5 @@ CREATE TABLE usersession
     user_id     bigint  NOT NULL,
     CONSTRAINT usersession_pkey PRIMARY KEY (id),
     CONSTRAINT fk_usersession_user FOREIGN KEY (user_id)
-        REFERENCES "user" (id)
+        REFERENCES user(id)
 );
