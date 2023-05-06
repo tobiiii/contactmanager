@@ -2,6 +2,7 @@ package com.ps.contactmanager.ServiceImpl;
 
 import com.ps.contactmanager.domain.DTO.AuthenticationRequest;
 import com.ps.contactmanager.domain.DTO.AuthenticationResponse;
+import com.ps.contactmanager.domain.DTO.ChangePasswordDto;
 import com.ps.contactmanager.domain.DTO.UserDto;
 import com.ps.contactmanager.domain.Password;
 import com.ps.contactmanager.domain.Profile;
@@ -12,6 +13,7 @@ import com.ps.contactmanager.domain.view.UserView;
 import com.ps.contactmanager.exceptions.ValidationException;
 import com.ps.contactmanager.repository.SecurityCustomizationRepository;
 import com.ps.contactmanager.repository.UserRepository;
+import com.ps.contactmanager.security.ContactmanagerWebAuthenticationDetails;
 import com.ps.contactmanager.security.TokenProvider;
 import com.ps.contactmanager.security.WebSecurityConfig;
 import com.ps.contactmanager.service.ProfileService;
@@ -35,12 +37,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
 
 @Service
-public class UserSrviceImpl implements UserService {
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
@@ -107,26 +111,26 @@ public class UserSrviceImpl implements UserService {
 
 
     @Override
-    public User update(Long userId, UserDto user) throws ValidationException {
+    public User update(Long userId, UserDto user)  {
         User userToUpdate = findUserById(userId);
         userToUpdate.setFirstName(user.getFirstName());
         userToUpdate.setLastName(user.getLastName());
         return userRepository.save(userToUpdate);
     }
 
-    public User findUserById(Long userId) throws ValidationException {
+    public User findUserById(Long userId)  {
         return userRepository.findById(userId)
                 .orElseThrow(() -> new ValidationException(ERROR_CODE.INEXISTANT_USER));
     }
 
     @Override
-    public UserView findUserViewById(Long userId) throws ValidationException {
+    public UserView findUserViewById(Long userId)  {
         return new UserView(findUserById(userId));
     }
 
 
     @Override
-    public void delete(Long userId) throws ValidationException {
+    public void delete(Long userId)  {
         User userToDelete = findUserById(userId);
         try {
             userRepository.delete(userToDelete);
@@ -173,7 +177,7 @@ public class UserSrviceImpl implements UserService {
         //        Map<String, String> claims = new HashMap<>(); //Optional
         final String accessToken = tokenProvider.generateToken(user, null);
 
-        // Start admin session
+        // Start session
         userSessionService.startSession(request, accessToken, user);
 
         //Get refresh token
@@ -192,7 +196,7 @@ public class UserSrviceImpl implements UserService {
                 new UserView(user), privileges);
     }
 
-    public void checkPassword(String pwd , User user) throws ValidationException {
+    public void checkPassword(String pwd , User user)  {
 
         if (!webSecurityConfig.passwordEncoder().matches(pwd, user.getPassword().getCredential())) {
             throw new ValidationException(ERROR_CODE.INCORRECT_PASSWORD);
@@ -216,13 +220,13 @@ public class UserSrviceImpl implements UserService {
 
 
     @Override
-    public User checkEmail(String email) throws ValidationException {
+    public User checkEmail(String email)  {
         return userRepository.findByEmailAddressIgnoreCase(email)
                 .orElseThrow(() -> new ValidationException(ERROR_CODE.INCORRECT_EMAIL));
     }
 
     @Override
-    public User getConnectedUser() throws ValidationException {
+    public User getConnectedUser()  {
         var authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.getPrincipal() instanceof UserDetailsImpl) {
             UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
@@ -232,6 +236,56 @@ public class UserSrviceImpl implements UserService {
         throw new ValidationException(ERROR_CODE.INVALID_SESSION);
     }
 
+    @Override
+    public AuthenticationResponse renewSession(String tokenId, HttpServletRequest request){
+
+        final var expiredToken = tokenProvider.getTokenFromRequest(request);
+        final var expiredTokenId = tokenProvider.getIdFromExpiredToken(expiredToken);
+
+        if (!expiredTokenId.equals(tokenId)) {
+            throw new ValidationException(ERROR_CODE.DIFFERENT_TOKEN);
+        }
+
+        //Check existence of token
+        var optionalSession = userSessionService.findBy("token", expiredTokenId);
+
+        //Check session
+        userSessionService.checkSession(optionalSession);
+        var userSession = optionalSession.get();
+
+        //Check allowed duration to refresh token
+        Instant deadline = userSession.getLogoutTime().toInstant().plus(paramsProvider.getRefreshTokenDuration(), ChronoUnit.MINUTES);
+        if (deadline.isBefore(Instant.now())) {
+            userSessionService.disconnectByToken(expiredTokenId);
+            throw new ValidationException(ERROR_CODE.EXPIRED_TOKEN);
+        }
+
+        var user = userSession.getUser();
+
+        final String accessToken = tokenProvider.generateToken(user, null);
+
+        var userDetails = userDetailsServiceImpl.loadUserByUsername(userSession.getEmail(), userSession);
+        var authentication = tokenProvider.getAuthenticationToken(accessToken, userDetails);
+        var webDetails = new ContactmanagerWebAuthenticationDetails(request);
+        authentication.setDetails(webDetails);
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        userSessionService.refreshToken(expiredTokenId, accessToken);
+
+        String refreshToken = tokenProvider.getIdFromToken(accessToken);
+
+        return new AuthenticationResponse(accessToken, refreshToken);
+    }
+
+    public  void changePassword(ChangePasswordDto passwordDto)  {
+        User user = getConnectedUser();
+        if (user == null) {
+            throw new ValidationException(ERROR_CODE.INVALID_SESSION);
+        }
+        //If the old password match the current one
+        checkPassword(passwordDto.getOldPassword(), user);
+        savePassword(passwordDto.getNewPassword(), user);
+    }
 
 
 }

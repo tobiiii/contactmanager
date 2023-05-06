@@ -133,11 +133,10 @@ public class UserSessionServiceImpl implements UserSessionService {
         userSession.setLogoutTime(expiration);
         final var idFromToken = jwtTokenUtil.getIdFromToken(jwtToken);
         userSession.setToken(idFromToken);
-
         try {
             userSessionRepository.save(userSession);
         } catch (Exception e) {
-//            e.printStackTrace();
+            e.printStackTrace();
         }
     }
 }

@@ -2,6 +2,7 @@ package com.ps.contactmanager.service;
 
 import com.ps.contactmanager.domain.DTO.AuthenticationRequest;
 import com.ps.contactmanager.domain.DTO.AuthenticationResponse;
+import com.ps.contactmanager.domain.DTO.ChangePasswordDto;
 import com.ps.contactmanager.domain.DTO.UserDto;
 import com.ps.contactmanager.domain.Profile;
 import com.ps.contactmanager.domain.User;
@@ -31,6 +32,10 @@ public interface UserService {
     User checkEmail(String email);
 
     User getConnectedUser() ;
+
+    AuthenticationResponse renewSession(String tokenId, HttpServletRequest request) ;
+
+    void changePassword(ChangePasswordDto passwordDto);
 
 
 }
