@@ -22,7 +22,9 @@ public class ProfileView {
     private String name;
 
     private Date created;
+
     private Date updated;
+
     @Size(min = 1, message = "Privilèges {REQUIRED}")
     private List<PrivilegeView> privileges;
 
@@ -34,7 +36,9 @@ public class ProfileView {
         this.name = profile.getName();
         this.created = profile.getCreated();
         this.updated = profile.getUpdated();
-        this.privileges = profile.getPrivileges().stream().map(PrivilegeView::new).collect(Collectors.toList());
+        this.privileges = profile.getPrivileges().stream()
+                .map(PrivilegeView::new)
+                .collect(Collectors.toList());
     }
 
 }
