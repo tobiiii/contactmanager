@@ -1,11 +1,18 @@
 package com.ps.contactmanager.domain.view;
 
 import com.ps.contactmanager.domain.Contact;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class ContactView {
 
     private Long id;
