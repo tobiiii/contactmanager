@@ -2,7 +2,6 @@ package com.ps.contactmanager.service;
 
 import com.ps.contactmanager.domain.DTO.ProfileDto;
 import com.ps.contactmanager.domain.Profile;
-import com.ps.contactmanager.domain.enums.ERROR_CODE;
 import com.ps.contactmanager.domain.view.ProfileView;
 
 import java.util.List;
