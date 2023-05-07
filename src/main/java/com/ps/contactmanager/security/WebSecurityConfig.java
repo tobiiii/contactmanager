@@ -60,6 +60,7 @@ public class WebSecurityConfig {
         final String[] WHITE_LIST = {
                 "/v3/api-docs/**",
                 "/swagger-ui/**",
+                "/swagger-ui.html",
                 "/v2/api-docs/**",
                 "/swagger-resources/**",
                 "/api/auth/**",
@@ -76,7 +77,6 @@ public class WebSecurityConfig {
                 .requestMatchers(WHITE_LIST).permitAll()
                 .requestMatchers(toH2Console()).permitAll()
                 .requestMatchers(HttpMethod.OPTIONS).permitAll()
-
                 .anyRequest().authenticated()
                 .and().httpBasic();
 

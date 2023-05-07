@@ -4,10 +4,8 @@ import com.ps.contactmanager.domain.DTO.ChangePasswordDto;
 import com.ps.contactmanager.domain.DTO.UserDto;
 import com.ps.contactmanager.domain.User;
 import com.ps.contactmanager.domain.view.UserView;
-import com.ps.contactmanager.exceptions.ValidationException;
 import com.ps.contactmanager.service.UserService;
 import com.ps.contactmanager.utils.JsonResponse;
-import org.springdoc.api.annotations.ParameterObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -28,7 +26,7 @@ public class UserController {
 
     @PreAuthorize("hasAuthority('user.list')")
     @GetMapping(value = "/find_all")
-    public JsonResponse findAll(@ParameterObject Pageable pageable) {
+    public JsonResponse findAll(Pageable pageable) {
         Page<UserView> users = userService.getAllUsers(pageable);
         return JsonResponse.builder().data(users)
                 .status(JsonResponse.STATUS.SUCCESS).build();
