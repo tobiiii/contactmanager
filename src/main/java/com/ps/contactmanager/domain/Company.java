@@ -3,13 +3,11 @@ package com.ps.contactmanager.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Collection;
 
+@Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

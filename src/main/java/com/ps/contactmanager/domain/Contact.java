@@ -3,14 +3,12 @@ package com.ps.contactmanager.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ps.contactmanager.domain.enums.ContactTypeE;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Collection;
 
 
+@Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
