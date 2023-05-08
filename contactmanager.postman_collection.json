@@ -1,0 +1,1627 @@
+{
+	"info": {
+		"_postman_id": "481ccfae-a804-4405-b22e-816decac5ddb",
+		"name": "contact manager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22930698"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "find all",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxNTdiMDRiYS05YTcyLTQ1MjgtODZjMi1iYmVmZGE5MGJmZTgiLCJzdWIiOiJhYmRvdUB0ZXN0LmNvbSIsInJvbGVzIjoidXNlci5saXN0IiwiaWF0IjoxNjc5MTM2MDcwLCJleHAiOjE2NzkxMzc4NzB9.VkBbyk_UJY8tSdj7T-FRnuds4AAMOFJQAGxQqASM76w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/user/find_all",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"find_all"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "find all",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/user/find_all",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"find_all"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 06 May 2023 02:23:56 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"SUCCESS\",\n    \"errorCode\": null,\n    \"errorMsg\": null,\n    \"data\": {\n        \"content\": [\n            {\n                \"id\": 1,\n                \"login\": null,\n                \"firstName\": \"SUPER\",\n                \"lastName\": \"ADMIN\",\n                \"emailAddress\": \"superadmin@test.com\",\n                \"isLocked\": null,\n                \"created\": \"2021-01-19T13:42:44.351+00:00\",\n                \"updated\": \"2021-01-19T13:42:44.351+00:00\",\n                \"defaultPass\": null\n            }\n        ],\n        \"pageable\": {\n            \"sort\": {\n                \"empty\": true,\n                \"sorted\": false,\n                \"unsorted\": true\n            },\n            \"offset\": 0,\n            \"pageNumber\": 0,\n            \"pageSize\": 20,\n            \"paged\": true,\n            \"unpaged\": false\n        },\n        \"last\": true,\n        \"totalPages\": 1,\n        \"totalElements\": 1,\n        \"size\": 20,\n        \"number\": 0,\n        \"sort\": {\n            \"empty\": true,\n            \"sorted\": false,\n            \"unsorted\": true\n        },\n        \"first\": true,\n        \"numberOfElements\": 1,\n        \"empty\": false\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"emailAddress\": \"abdou@test.com\",\n    \"firstName\": \"abdelwakil\",\n    \"lastName\": \"rabidii\",\n    \"profile\": \"1\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/user/update/6",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"update",
+								"6"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"emailAddress\": \"superadmin@test.com\",\n    \"firstName\": \"abdelwakil\",\n    \"lastName\": \"rabidi\",\n    \"profile\": \"1\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/user/update/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"update",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 06 May 2023 02:30:01 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"SUCCESS\",\n    \"errorCode\": null,\n    \"errorMsg\": null,\n    \"data\": {\n        \"id\": 1,\n        \"login\": null,\n        \"firstName\": \"abdelwakil\",\n        \"lastName\": \"rabidi\",\n        \"emailAddress\": \"superadmin@test.com\",\n        \"isLocked\": null,\n        \"created\": \"2021-01-19T13:42:44.351+00:00\",\n        \"updated\": \"2021-01-19T13:42:44.351+00:00\",\n        \"defaultPass\": null\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI3NWU1YTUwYy1iMDNlLTQzMTktYjI3Ni0wNzZiYjM5ODVlYTQiLCJzdWIiOiJzdXBlcmFkbWluQHRlc3QuY29tIiwicm9sZXMiOiJwcm9maWxlLmFkZCxwcm9maWxlLmRlbGV0ZSxwcm9maWxlLmRldGFpbCxwcm9maWxlLnVwZGF0ZSx1c2VyLmFkZCxwcm9maWxlLmxpc3QsdXNlci5kZWxldGUsdXNlci5kZXRhaWwsdXNlci51cGRhdGUsdXNlci5saXN0IiwiaWF0IjoxNjgzMzQxMTg1LCJleHAiOjE2ODMzNDI5ODV9.5CmgpaAmujgQK6ZcUDjZREN7x_1rHQgVt2EaO8IH8m0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"emailAddress\": \"abdou@test.com\",\n    \"firstName\": \"abdelwakil\",\n    \"lastName\": \"rabidii\",\n    \"profile\": \"1\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/user/create",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"emailAddress\": \"abdou@test.com\",\n    \"firstName\": \"abdelwakil\",\n    \"lastName\": \"rabidii\",\n    \"profile\": \"1\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/user/create",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"create"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 06 May 2023 02:46:43 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"SUCCESS\",\n    \"errorCode\": null,\n    \"errorMsg\": null,\n    \"data\": {\n        \"id\": 202701,\n        \"login\": null,\n        \"firstName\": \"abdelwakil\",\n        \"lastName\": \"rabidii\",\n        \"emailAddress\": \"abdou@test.com\",\n        \"isLocked\": null,\n        \"created\": null,\n        \"updated\": null,\n        \"defaultPass\": \"7GrOrqESXSGJ4ETTk1Lw\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/user/detail/6",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"detail",
+								"6"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "detail",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/user/detail/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"detail",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 06 May 2023 02:30:04 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"SUCCESS\",\n    \"errorCode\": null,\n    \"errorMsg\": null,\n    \"data\": {\n        \"id\": 1,\n        \"login\": null,\n        \"firstName\": \"abdelwakil\",\n        \"lastName\": \"rabidi\",\n        \"emailAddress\": \"superadmin@test.com\",\n        \"isLocked\": null,\n        \"created\": \"2021-01-19T13:42:44.351+00:00\",\n        \"updated\": \"2021-01-19T13:42:44.351+00:00\",\n        \"defaultPass\": null\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "change_password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJiYmVmYzZjMi05MzMwLTQxNTEtYTFlMi03NDcyNjk0OGE0NTIiLCJzdWIiOiJhYmRvdUB0ZXN0LmNvbSIsInJvbGVzIjoicHJvZmlsZS5hZGQscHJvZmlsZS5kZWxldGUscHJvZmlsZS5kZXRhaWwscHJvZmlsZS51cGRhdGUscHJvZmlsZS5saXN0LHVzZXIuYWRkLHVzZXIuZGVsZXRlLHVzZXIuZGV0YWlsLHVzZXIudXBkYXRlLHVzZXIubGlzdCxkb2N0b3IuYWRkLGRvY3Rvci5kZWxldGUsZG9jdG9yLmRldGFpbCxkb2N0b3IudXBkYXRlLGRvY3Rvci5saXN0LHBhdGllbnQuYWRkLHBhdGllbnQuZGVsZXRlLHBhdGllbnQuZGV0YWlsLHBhdGllbnQudXBkYXRlLHBhdGllbnQubGlzdCxhcHBvaW50bWVudC5hZGQsYXBwb2ludG1lbnQuY2FuY2VsLGFwcG9pbnRtZW50LmVuZCxhcHBvaW50bWVudC5kZXRhaWwsYXBwb2ludG1lbnQudXBkYXRlLGFwcG9pbnRtZW50Lmxpc3QsYXBwb2ludG1lbnQubGlzdF9ieV9wYXRpZW50LHByZXNjcmlwdGlvbi5hZGQscHJlc2NyaXB0aW9uLmRlbGV0ZSxwcmVzY3JpcHRpb24uZGV0YWlsLHByZXNjcmlwdGlvbi51cGRhdGUscHJlc2NyaXB0aW9uLmxpc3QscHJlc2NyaXB0aW9uLmxpc3RfYnlfcGF0aWVudCxtZWRpY2FsSGlzdG9yeS5hZGQsbWVkaWNhbEhpc3RvcnkuZGVsZXRlLG1lZGljYWxIaXN0b3J5LmRldGFpbCxtZWRpY2FsSGlzdG9yeS51cGRhdGUsbWVkaWNhbEhpc3RvcnkubGlzdCxtZWRpY2FsSGlzdG9yeS5saXN0X2J5X3BhdGllbnQiLCJpYXQiOjE2NzkxNTYyMDQsImV4cCI6MTY3OTE1ODAwNH0.gB2BITMa6enr7z54k0i1qKoNF_ZNS8fjxhFejtTTr7Y",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"newPassword\": \"Admin@01\",\n  \"oldPassword\": \"`J<V~(~bbv`7ho3fO*%5\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/user/change_password",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"change_password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "change_password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"newPassword\": \"Admin@01\",\n  \"oldPassword\": \"Admin@23\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/user/change_password",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"change_password"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 06 May 2023 02:48:12 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"SUCCESS\",\n    \"errorCode\": null,\n    \"errorMsg\": null,\n    \"data\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "authentification",
+			"item": [
+				{
+					"name": "auth",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"password\": \"Admin@23\",\n \"email\": \"superadmin@test.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/auth/authentification",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"authentification"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "auth",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"password\": \"Admin@01\",\n \"email\": \"superadmin@test.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/auth/authentification",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"authentification"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 06 May 2023 02:48:46 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"SUCCESS\",\n    \"errorCode\": null,\n    \"errorMsg\": null,\n    \"data\": {\n        \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIwNDJjN2VhOC03Mjk0LTQxMjItYWMwNi04NjA1NzYyNmVmNjgiLCJzdWIiOiJzdXBlcmFkbWluQHRlc3QuY29tIiwicm9sZXMiOiJwcm9maWxlLmFkZCxwcm9maWxlLmRlbGV0ZSxwcm9maWxlLmRldGFpbCxwcm9maWxlLnVwZGF0ZSx1c2VyLmFkZCxwcm9maWxlLmxpc3QsdXNlci5kZWxldGUsdXNlci5kZXRhaWwsdXNlci51cGRhdGUsdXNlci5saXN0IiwiaWF0IjoxNjgzMzQxMzI2LCJleHAiOjE2ODMzNDMxMjZ9.jHUSWIfy4TDvp5AvrNJQs-u7JyJX76PF_7lVtaYp-UU\",\n        \"refreshToken\": \"042c7ea8-7294-4122-ac06-86057626ef68\",\n        \"redirectTo\": \"ADMIN\",\n        \"sessionDuration\": 1800,\n        \"appBuildInfo\": \"\",\n        \"user\": {\n            \"id\": 1,\n            \"login\": null,\n            \"firstName\": \"SUPER\",\n            \"lastName\": \"ADMIN\",\n            \"emailAddress\": \"superadmin@test.com\",\n            \"isLocked\": null,\n            \"created\": \"2021-01-19T13:42:44.351+00:00\",\n            \"updated\": \"2021-01-19T13:42:44.351+00:00\",\n            \"defaultPass\": null\n        },\n        \"privileges\": [\n            \"user.delete\",\n            \"profile.delete\",\n            \"profile.detail\",\n            \"user.add\",\n            \"profile.update\",\n            \"user.update\",\n            \"user.detail\",\n            \"user.list\",\n            \"profile.add\",\n            \"profile.list\"\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "refresh_token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/auth/refresh_token",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"refresh_token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "profile",
+			"item": [
+				{
+					"name": "find all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI5Njg2ZmUzMS0zYTAzLTQ0MzktYTZiNS1mMDVkNThkMTE1YzAiLCJzdWIiOiJzdXBlcmFkbWluQHRlc3QuY29tIiwicm9sZXMiOiJwcm9maWxlLmFkZCxwcm9maWxlLmRlbGV0ZSxwcm9maWxlLmRldGFpbCxwcm9maWxlLnVwZGF0ZSx1c2VyLmFkZCxwcm9maWxlLmxpc3QsdXNlci5kZWxldGUsdXNlci5kZXRhaWwsdXNlci51cGRhdGUsdXNlci5saXN0IiwiaWF0IjoxNjgzMzQyMzEzLCJleHAiOjE2ODMzNDQxMTN9.hv7v1AIAks6iRW6sn8mctWxsMCgHAxEpNKGyWP4BTec",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n            \"code\": \"DOCTOR\",\n            \"name\": \"profile for doctors\",\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/profile/find_all",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"profile",
+								"find_all"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "find all",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n            \"code\": \"DOCTOR\",\n            \"name\": \"profile for doctors\",\n        }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/profile/find_all",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"find_all"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 06 May 2023 03:07:15 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"SUCCESS\",\n    \"errorCode\": null,\n    \"errorMsg\": null,\n    \"data\": [\n        {\n            \"id\": 202701,\n            \"code\": \"TEST1\",\n            \"name\": \"profile for test\",\n            \"created\": null,\n            \"updated\": null,\n            \"privileges\": [\n                {\n                    \"id\": 1,\n                    \"description\": \"Créer\",\n                    \"code\": \"profile.add\"\n                },\n                {\n                    \"id\": 2,\n                    \"description\": \"Supprimer\",\n                    \"code\": \"profile.delete\"\n                }\n            ]\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI5Njg2ZmUzMS0zYTAzLTQ0MzktYTZiNS1mMDVkNThkMTE1YzAiLCJzdWIiOiJzdXBlcmFkbWluQHRlc3QuY29tIiwicm9sZXMiOiJwcm9maWxlLmFkZCxwcm9maWxlLmRlbGV0ZSxwcm9maWxlLmRldGFpbCxwcm9maWxlLnVwZGF0ZSx1c2VyLmFkZCxwcm9maWxlLmxpc3QsdXNlci5kZWxldGUsdXNlci5kZXRhaWwsdXNlci51cGRhdGUsdXNlci5saXN0IiwiaWF0IjoxNjgzMzQyMzEzLCJleHAiOjE2ODMzNDQxMTN9.hv7v1AIAks6iRW6sn8mctWxsMCgHAxEpNKGyWP4BTec",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n            \"code\": \"TEST1\",\n            \"name\": \"profile for test\",\n            \"privileges\": [1,2]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/profile/update/202701",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"profile",
+								"update",
+								"202701"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n            \"code\": \"TEST1\",\n            \"name\": \"profile for test\",\n            \"privileges\": [1,2]\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/profile/update/202701",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"update",
+										"202701"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 06 May 2023 03:06:37 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"SUCCESS\",\n    \"errorCode\": null,\n    \"errorMsg\": null,\n    \"data\": {\n        \"id\": 202701,\n        \"code\": \"TEST1\",\n        \"name\": \"profile for test\",\n        \"created\": null,\n        \"updated\": null,\n        \"privileges\": [\n            {\n                \"id\": 1,\n                \"description\": \"Créer\",\n                \"code\": \"profile.add\"\n            },\n            {\n                \"id\": 2,\n                \"description\": \"Supprimer\",\n                \"code\": \"profile.delete\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "detail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI5Njg2ZmUzMS0zYTAzLTQ0MzktYTZiNS1mMDVkNThkMTE1YzAiLCJzdWIiOiJzdXBlcmFkbWluQHRlc3QuY29tIiwicm9sZXMiOiJwcm9maWxlLmFkZCxwcm9maWxlLmRlbGV0ZSxwcm9maWxlLmRldGFpbCxwcm9maWxlLnVwZGF0ZSx1c2VyLmFkZCxwcm9maWxlLmxpc3QsdXNlci5kZWxldGUsdXNlci5kZXRhaWwsdXNlci51cGRhdGUsdXNlci5saXN0IiwiaWF0IjoxNjgzMzQyMzEzLCJleHAiOjE2ODMzNDQxMTN9.hv7v1AIAks6iRW6sn8mctWxsMCgHAxEpNKGyWP4BTec",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/profile/detail/202701",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"profile",
+								"detail",
+								"202701"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "detail",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/profile/detail/202701",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"detail",
+										"202701"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 06 May 2023 03:07:01 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"SUCCESS\",\n    \"errorCode\": null,\n    \"errorMsg\": null,\n    \"data\": {\n        \"id\": 202701,\n        \"code\": \"TEST1\",\n        \"name\": \"profile for test\",\n        \"created\": null,\n        \"updated\": null,\n        \"privileges\": [\n            {\n                \"id\": 1,\n                \"description\": \"Créer\",\n                \"code\": \"profile.add\"\n            },\n            {\n                \"id\": 2,\n                \"description\": \"Supprimer\",\n                \"code\": \"profile.delete\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI5Njg2ZmUzMS0zYTAzLTQ0MzktYTZiNS1mMDVkNThkMTE1YzAiLCJzdWIiOiJzdXBlcmFkbWluQHRlc3QuY29tIiwicm9sZXMiOiJwcm9maWxlLmFkZCxwcm9maWxlLmRlbGV0ZSxwcm9maWxlLmRldGFpbCxwcm9maWxlLnVwZGF0ZSx1c2VyLmFkZCxwcm9maWxlLmxpc3QsdXNlci5kZWxldGUsdXNlci5kZXRhaWwsdXNlci51cGRhdGUsdXNlci5saXN0IiwiaWF0IjoxNjgzMzQyMzEzLCJleHAiOjE2ODMzNDQxMTN9.hv7v1AIAks6iRW6sn8mctWxsMCgHAxEpNKGyWP4BTec",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n            \"code\": \"TEST\",\n            \"name\": \"profile for tests\",\n            \"privileges\": [2,5,8]\n\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/profile/add",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"profile",
+								"add"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "add",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n            \"code\": \"TEST\",\n            \"name\": \"profile for tests\",\n            \"privileges\": [2,5,8]\n\n }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/profile/add",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"add"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 06 May 2023 03:05:43 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"SUCCESS\",\n    \"errorCode\": null,\n    \"errorMsg\": null,\n    \"data\": {\n        \"id\": 202701,\n        \"code\": \"TEST\",\n        \"name\": \"profile for tests\",\n        \"created\": null,\n        \"updated\": null,\n        \"privileges\": [\n            {\n                \"id\": 2,\n                \"description\": \"Supprimer\",\n                \"code\": \"profile.delete\"\n            },\n            {\n                \"id\": 5,\n                \"description\": \"Créer\",\n                \"code\": \"user.add\"\n            },\n            {\n                \"id\": 8,\n                \"description\": \"Détail\",\n                \"code\": \"user.detail\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIwNDJjN2VhOC03Mjk0LTQxMjItYWMwNi04NjA1NzYyNmVmNjgiLCJzdWIiOiJzdXBlcmFkbWluQHRlc3QuY29tIiwicm9sZXMiOiJwcm9maWxlLmFkZCxwcm9maWxlLmRlbGV0ZSxwcm9maWxlLmRldGFpbCxwcm9maWxlLnVwZGF0ZSx1c2VyLmFkZCxwcm9maWxlLmxpc3QsdXNlci5kZWxldGUsdXNlci5kZXRhaWwsdXNlci51cGRhdGUsdXNlci5saXN0IiwiaWF0IjoxNjgzMzQxMzI2LCJleHAiOjE2ODMzNDMxMjZ9.jHUSWIfy4TDvp5AvrNJQs-u7JyJX76PF_7lVtaYp-UU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/profile/delete/202704",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"profile",
+								"delete",
+								"202704"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/profile/delete/202704",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"delete",
+										"202704"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 06 May 2023 02:54:17 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"SUCCESS\",\n    \"errorCode\": null,\n    \"errorMsg\": null,\n    \"data\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "company",
+			"item": [
+				{
+					"name": "find all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI4ZTg4ODY0Mi0wNjUzLTQ5YTItYWNmNS0xZmMwMGFlMzYwNTkiLCJzdWIiOiJzdXBlcmFkbWluQHRlc3QuY29tIiwicm9sZXMiOiJwcm9maWxlLmFkZCxwcm9maWxlLmRlbGV0ZSxwcm9maWxlLmRldGFpbCxwcm9maWxlLnVwZGF0ZSx1c2VyLmFkZCxwcm9maWxlLmxpc3QsdXNlci5kZWxldGUsdXNlci5kZXRhaWwsdXNlci51cGRhdGUsdXNlci5saXN0LGNvbXBhbnkuYWRkLGNvbXBhbnkuZGVsZXRlLGNvbXBhbnkuZGV0YWlsLGNvbXBhbnkudXBkYXRlLGNvbXBhbnkubGlzdCxjb250YWN0LmFkZCxjb250YWN0LmRlbGV0ZSxjb250YWN0LmRldGFpbCxjb250YWN0LnVwZGF0ZSxjb250YWN0Lmxpc3QsY29udGFjdC5hZGRfdG9fY29tcGFueSIsImlhdCI6MTY4MzQyMDExNSwiZXhwIjoxNjgzNDIxOTE1fQ.vV_4R-_uGWet0NqtR8rVi8ziSJQZY93VODEeoELvAdE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n            \"code\": \"DOCTOR\",\n            \"name\": \"profile for doctors\",\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/company/find_all",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"company",
+								"find_all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI4ZTg4ODY0Mi0wNjUzLTQ5YTItYWNmNS0xZmMwMGFlMzYwNTkiLCJzdWIiOiJzdXBlcmFkbWluQHRlc3QuY29tIiwicm9sZXMiOiJwcm9maWxlLmFkZCxwcm9maWxlLmRlbGV0ZSxwcm9maWxlLmRldGFpbCxwcm9maWxlLnVwZGF0ZSx1c2VyLmFkZCxwcm9maWxlLmxpc3QsdXNlci5kZWxldGUsdXNlci5kZXRhaWwsdXNlci51cGRhdGUsdXNlci5saXN0LGNvbXBhbnkuYWRkLGNvbXBhbnkuZGVsZXRlLGNvbXBhbnkuZGV0YWlsLGNvbXBhbnkudXBkYXRlLGNvbXBhbnkubGlzdCxjb250YWN0LmFkZCxjb250YWN0LmRlbGV0ZSxjb250YWN0LmRldGFpbCxjb250YWN0LnVwZGF0ZSxjb250YWN0Lmxpc3QsY29udGFjdC5hZGRfdG9fY29tcGFueSIsImlhdCI6MTY4MzQyMDExNSwiZXhwIjoxNjgzNDIxOTE1fQ.vV_4R-_uGWet0NqtR8rVi8ziSJQZY93VODEeoELvAdE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n            \"code\": \"TES1\",\n            \"address\": \"cheraga algerrrrr\",\n            \"tva\": \"BE 0123 456 789\",\n            \"contacts\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/company/update/202701",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"company",
+								"update",
+								"202701"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "detail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI4ZTg4ODY0Mi0wNjUzLTQ5YTItYWNmNS0xZmMwMGFlMzYwNTkiLCJzdWIiOiJzdXBlcmFkbWluQHRlc3QuY29tIiwicm9sZXMiOiJwcm9maWxlLmFkZCxwcm9maWxlLmRlbGV0ZSxwcm9maWxlLmRldGFpbCxwcm9maWxlLnVwZGF0ZSx1c2VyLmFkZCxwcm9maWxlLmxpc3QsdXNlci5kZWxldGUsdXNlci5kZXRhaWwsdXNlci51cGRhdGUsdXNlci5saXN0LGNvbXBhbnkuYWRkLGNvbXBhbnkuZGVsZXRlLGNvbXBhbnkuZGV0YWlsLGNvbXBhbnkudXBkYXRlLGNvbXBhbnkubGlzdCxjb250YWN0LmFkZCxjb250YWN0LmRlbGV0ZSxjb250YWN0LmRldGFpbCxjb250YWN0LnVwZGF0ZSxjb250YWN0Lmxpc3QsY29udGFjdC5hZGRfdG9fY29tcGFueSIsImlhdCI6MTY4MzQyMDExNSwiZXhwIjoxNjgzNDIxOTE1fQ.vV_4R-_uGWet0NqtR8rVi8ziSJQZY93VODEeoELvAdE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/company/detail/202701",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"company",
+								"detail",
+								"202701"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI4ZTg4ODY0Mi0wNjUzLTQ5YTItYWNmNS0xZmMwMGFlMzYwNTkiLCJzdWIiOiJzdXBlcmFkbWluQHRlc3QuY29tIiwicm9sZXMiOiJwcm9maWxlLmFkZCxwcm9maWxlLmRlbGV0ZSxwcm9maWxlLmRldGFpbCxwcm9maWxlLnVwZGF0ZSx1c2VyLmFkZCxwcm9maWxlLmxpc3QsdXNlci5kZWxldGUsdXNlci5kZXRhaWwsdXNlci51cGRhdGUsdXNlci5saXN0LGNvbXBhbnkuYWRkLGNvbXBhbnkuZGVsZXRlLGNvbXBhbnkuZGV0YWlsLGNvbXBhbnkudXBkYXRlLGNvbXBhbnkubGlzdCxjb250YWN0LmFkZCxjb250YWN0LmRlbGV0ZSxjb250YWN0LmRldGFpbCxjb250YWN0LnVwZGF0ZSxjb250YWN0Lmxpc3QsY29udGFjdC5hZGRfdG9fY29tcGFueSIsImlhdCI6MTY4MzQyMDExNSwiZXhwIjoxNjgzNDIxOTE1fQ.vV_4R-_uGWet0NqtR8rVi8ziSJQZY93VODEeoELvAdE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n            \"code\": \"aaaa\",\n            \"address\": \"cheraga alger\",\n            \"tva\": \"BE 0123 456 789\",\n            \"contacts\": []\n\n\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/company/add",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"company",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI4ZTg4ODY0Mi0wNjUzLTQ5YTItYWNmNS0xZmMwMGFlMzYwNTkiLCJzdWIiOiJzdXBlcmFkbWluQHRlc3QuY29tIiwicm9sZXMiOiJwcm9maWxlLmFkZCxwcm9maWxlLmRlbGV0ZSxwcm9maWxlLmRldGFpbCxwcm9maWxlLnVwZGF0ZSx1c2VyLmFkZCxwcm9maWxlLmxpc3QsdXNlci5kZWxldGUsdXNlci5kZXRhaWwsdXNlci51cGRhdGUsdXNlci5saXN0LGNvbXBhbnkuYWRkLGNvbXBhbnkuZGVsZXRlLGNvbXBhbnkuZGV0YWlsLGNvbXBhbnkudXBkYXRlLGNvbXBhbnkubGlzdCxjb250YWN0LmFkZCxjb250YWN0LmRlbGV0ZSxjb250YWN0LmRldGFpbCxjb250YWN0LnVwZGF0ZSxjb250YWN0Lmxpc3QsY29udGFjdC5hZGRfdG9fY29tcGFueSIsImlhdCI6MTY4MzQyMDExNSwiZXhwIjoxNjgzNDIxOTE1fQ.vV_4R-_uGWet0NqtR8rVi8ziSJQZY93VODEeoELvAdE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/company/delete/202701",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"company",
+								"delete",
+								"202701"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "contact",
+			"item": [
+				{
+					"name": "find all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI4ZTg4ODY0Mi0wNjUzLTQ5YTItYWNmNS0xZmMwMGFlMzYwNTkiLCJzdWIiOiJzdXBlcmFkbWluQHRlc3QuY29tIiwicm9sZXMiOiJwcm9maWxlLmFkZCxwcm9maWxlLmRlbGV0ZSxwcm9maWxlLmRldGFpbCxwcm9maWxlLnVwZGF0ZSx1c2VyLmFkZCxwcm9maWxlLmxpc3QsdXNlci5kZWxldGUsdXNlci5kZXRhaWwsdXNlci51cGRhdGUsdXNlci5saXN0LGNvbXBhbnkuYWRkLGNvbXBhbnkuZGVsZXRlLGNvbXBhbnkuZGV0YWlsLGNvbXBhbnkudXBkYXRlLGNvbXBhbnkubGlzdCxjb250YWN0LmFkZCxjb250YWN0LmRlbGV0ZSxjb250YWN0LmRldGFpbCxjb250YWN0LnVwZGF0ZSxjb250YWN0Lmxpc3QsY29udGFjdC5hZGRfdG9fY29tcGFueSIsImlhdCI6MTY4MzQyMDExNSwiZXhwIjoxNjgzNDIxOTE1fQ.vV_4R-_uGWet0NqtR8rVi8ziSJQZY93VODEeoELvAdE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n            \"code\": \"DOCTOR\",\n            \"name\": \"profile for doctors\",\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/contact/find_all",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"contact",
+								"find_all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI4ZTg4ODY0Mi0wNjUzLTQ5YTItYWNmNS0xZmMwMGFlMzYwNTkiLCJzdWIiOiJzdXBlcmFkbWluQHRlc3QuY29tIiwicm9sZXMiOiJwcm9maWxlLmFkZCxwcm9maWxlLmRlbGV0ZSxwcm9maWxlLmRldGFpbCxwcm9maWxlLnVwZGF0ZSx1c2VyLmFkZCxwcm9maWxlLmxpc3QsdXNlci5kZWxldGUsdXNlci5kZXRhaWwsdXNlci51cGRhdGUsdXNlci5saXN0LGNvbXBhbnkuYWRkLGNvbXBhbnkuZGVsZXRlLGNvbXBhbnkuZGV0YWlsLGNvbXBhbnkudXBkYXRlLGNvbXBhbnkubGlzdCxjb250YWN0LmFkZCxjb250YWN0LmRlbGV0ZSxjb250YWN0LmRldGFpbCxjb250YWN0LnVwZGF0ZSxjb250YWN0Lmxpc3QsY29udGFjdC5hZGRfdG9fY29tcGFueSIsImlhdCI6MTY4MzQyMDExNSwiZXhwIjoxNjgzNDIxOTE1fQ.vV_4R-_uGWet0NqtR8rVi8ziSJQZY93VODEeoELvAdE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n            \"code\": \"test\",\n            \"firstName\": \"iyed\",\n            \"lastName\": \"rabidi\",\n            \"address\": \"boudouaou boumerdes\",\n            \"tva\": \"BE 0123 456 111\",\n            \"type\": \"FREELANCE\",\n            \"companies\": []\n\n\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/contact/update/202703",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"contact",
+								"update",
+								"202703"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "join_company",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI4ZTg4ODY0Mi0wNjUzLTQ5YTItYWNmNS0xZmMwMGFlMzYwNTkiLCJzdWIiOiJzdXBlcmFkbWluQHRlc3QuY29tIiwicm9sZXMiOiJwcm9maWxlLmFkZCxwcm9maWxlLmRlbGV0ZSxwcm9maWxlLmRldGFpbCxwcm9maWxlLnVwZGF0ZSx1c2VyLmFkZCxwcm9maWxlLmxpc3QsdXNlci5kZWxldGUsdXNlci5kZXRhaWwsdXNlci51cGRhdGUsdXNlci5saXN0LGNvbXBhbnkuYWRkLGNvbXBhbnkuZGVsZXRlLGNvbXBhbnkuZGV0YWlsLGNvbXBhbnkudXBkYXRlLGNvbXBhbnkubGlzdCxjb250YWN0LmFkZCxjb250YWN0LmRlbGV0ZSxjb250YWN0LmRldGFpbCxjb250YWN0LnVwZGF0ZSxjb250YWN0Lmxpc3QsY29udGFjdC5hZGRfdG9fY29tcGFueSIsImlhdCI6MTY4MzQyMDExNSwiZXhwIjoxNjgzNDIxOTE1fQ.vV_4R-_uGWet0NqtR8rVi8ziSJQZY93VODEeoELvAdE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n            \"code\": \"TES1\",\n            \"address\": \"cheraga algerrrrr\",\n            \"tva\": \"BE 0123 456 789\",\n            \"contacts\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/contact/add_to_company/202703/202702",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"contact",
+								"add_to_company",
+								"202703",
+								"202702"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "detail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI4ZTg4ODY0Mi0wNjUzLTQ5YTItYWNmNS0xZmMwMGFlMzYwNTkiLCJzdWIiOiJzdXBlcmFkbWluQHRlc3QuY29tIiwicm9sZXMiOiJwcm9maWxlLmFkZCxwcm9maWxlLmRlbGV0ZSxwcm9maWxlLmRldGFpbCxwcm9maWxlLnVwZGF0ZSx1c2VyLmFkZCxwcm9maWxlLmxpc3QsdXNlci5kZWxldGUsdXNlci5kZXRhaWwsdXNlci51cGRhdGUsdXNlci5saXN0LGNvbXBhbnkuYWRkLGNvbXBhbnkuZGVsZXRlLGNvbXBhbnkuZGV0YWlsLGNvbXBhbnkudXBkYXRlLGNvbXBhbnkubGlzdCxjb250YWN0LmFkZCxjb250YWN0LmRlbGV0ZSxjb250YWN0LmRldGFpbCxjb250YWN0LnVwZGF0ZSxjb250YWN0Lmxpc3QsY29udGFjdC5hZGRfdG9fY29tcGFueSIsImlhdCI6MTY4MzQyMDExNSwiZXhwIjoxNjgzNDIxOTE1fQ.vV_4R-_uGWet0NqtR8rVi8ziSJQZY93VODEeoELvAdE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/contact/detail/202703",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"contact",
+								"detail",
+								"202703"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI4ZTg4ODY0Mi0wNjUzLTQ5YTItYWNmNS0xZmMwMGFlMzYwNTkiLCJzdWIiOiJzdXBlcmFkbWluQHRlc3QuY29tIiwicm9sZXMiOiJwcm9maWxlLmFkZCxwcm9maWxlLmRlbGV0ZSxwcm9maWxlLmRldGFpbCxwcm9maWxlLnVwZGF0ZSx1c2VyLmFkZCxwcm9maWxlLmxpc3QsdXNlci5kZWxldGUsdXNlci5kZXRhaWwsdXNlci51cGRhdGUsdXNlci5saXN0LGNvbXBhbnkuYWRkLGNvbXBhbnkuZGVsZXRlLGNvbXBhbnkuZGV0YWlsLGNvbXBhbnkudXBkYXRlLGNvbXBhbnkubGlzdCxjb250YWN0LmFkZCxjb250YWN0LmRlbGV0ZSxjb250YWN0LmRldGFpbCxjb250YWN0LnVwZGF0ZSxjb250YWN0Lmxpc3QsY29udGFjdC5hZGRfdG9fY29tcGFueSIsImlhdCI6MTY4MzQyMDExNSwiZXhwIjoxNjgzNDIxOTE1fQ.vV_4R-_uGWet0NqtR8rVi8ziSJQZY93VODEeoELvAdE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n            \"code\": \"test\",\n            \"firstName\": \"abdelwakil\",\n            \"lastName\": \"rabidi\",\n            \"address\": \"cheraga alger\",\n            \"tva\": \"BE 0123 456 789\",\n            \"type\": \"FREELANCE\",\n            \"companies\": []\n\n\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/contact/add",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"contact",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI4ZTg4ODY0Mi0wNjUzLTQ5YTItYWNmNS0xZmMwMGFlMzYwNTkiLCJzdWIiOiJzdXBlcmFkbWluQHRlc3QuY29tIiwicm9sZXMiOiJwcm9maWxlLmFkZCxwcm9maWxlLmRlbGV0ZSxwcm9maWxlLmRldGFpbCxwcm9maWxlLnVwZGF0ZSx1c2VyLmFkZCxwcm9maWxlLmxpc3QsdXNlci5kZWxldGUsdXNlci5kZXRhaWwsdXNlci51cGRhdGUsdXNlci5saXN0LGNvbXBhbnkuYWRkLGNvbXBhbnkuZGVsZXRlLGNvbXBhbnkuZGV0YWlsLGNvbXBhbnkudXBkYXRlLGNvbXBhbnkubGlzdCxjb250YWN0LmFkZCxjb250YWN0LmRlbGV0ZSxjb250YWN0LmRldGFpbCxjb250YWN0LnVwZGF0ZSxjb250YWN0Lmxpc3QsY29udGFjdC5hZGRfdG9fY29tcGFueSIsImlhdCI6MTY4MzQyMDExNSwiZXhwIjoxNjgzNDIxOTE1fQ.vV_4R-_uGWet0NqtR8rVi8ziSJQZY93VODEeoELvAdE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/contact/delete/202701",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"contact",
+								"delete",
+								"202701"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
