@@ -66,15 +66,13 @@ public class ContactServiceImpl implements ContactService {
 
     public Contact fillContactFromDto(Contact newContact ,ContactDto contactDto) {
         List<Company> companies = companyService.getCompaniesFromIdList(contactDto.getCompanies());
-        newContact.setCreated(new Date());
-        newContact.setUpdated(new Date());
         newContact.setCode(contactDto.getCode());
         newContact.setFirstName(contactDto.getFirstName());
         newContact.setLastName(contactDto.getLastName());
         newContact.setAddress(contactDto.getAddress());
         newContact.setTva(contactDto.getTva());
         newContact.setType(ContactTypeE.valueOf(contactDto.getType()));
-        newContact.setCompanies(companies);
+        newContact.setCompanies(companies != null ? companies : new ArrayList<>());
         return newContact;
     }
 

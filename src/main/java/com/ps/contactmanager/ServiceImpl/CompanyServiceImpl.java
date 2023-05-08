@@ -77,8 +77,6 @@ public class CompanyServiceImpl implements CompanyService {
 
     public Company fillCompanyFromDto(Company company,CompanyDto companyDto) {
         List<Contact> contacts = contactService.getCompaniesFromIdList(companyDto.getContacts());
-        company.setCreated(new Date());
-        company.setUpdated(new Date());
         company.setCode(companyDto.getCode());
         company.setAddress(companyDto.getAddress());
         company.setTva(companyDto.getTva());

@@ -21,7 +21,7 @@ public class UserSession extends CommonEntity {
     @JoinColumn(
             name = "user_id",
             referencedColumnName = "id",
-            foreignKey = @ForeignKey(name = "fk_dbsession_user"))
+            foreignKey = @ForeignKey(name = "fk_usersession_user"))
     private User user;
 
     private String email;
