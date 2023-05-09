@@ -41,9 +41,15 @@ Password = admin
 User = admin
 
 ### Docker
+To create an image from our Dockerfile, we have to run ?docker build':
+```shell
+$> docker build -t my-contactmanager-image .
+```
 
-TODO after finishing the frontend app
-
+Finally, we're able to run the container from our image:
+```shell
+$> docker run -p 8080:8080 my-contactmanager-image
+```
 ## API Documentation
 
 The documentation of the API is made by OpenAPI 3.0 , it shows all the Endpoints of the application
