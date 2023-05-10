@@ -50,6 +50,43 @@ Finally, we're able to run the container from our image:
 ```shell
 $> docker run -p 8080:8080 my-contactmanager-image
 ```
+### Deploy on Render.com Using Jenkins 
+
+1.Set up a Jenkins instance on Render.com:
+
+   Create a new service on Render.com and select "Jenkins" as the service type.
+
+   Configure the necessary settings, such as the service name and environment.
+
+   Deploy the Jenkins service.
+
+2.Configure your Jenkins project:
+
+   Open the Jenkins web interface and navigate to your Jenkins instance.
+
+   Create a new Jenkins project or configure an existing one.
+
+   Configure the necessary settings, such as the project name and repository details.
+
+   Connect the Jenkins project to your GitHub repository.
+
+3.Configure the Jenkins project to use the Jenkinsfile:
+
+   In the Jenkins project configuration, go to the "Pipeline" section.
+   
+   Select "Pipeline script from SCM" as the Definition.
+   
+   Choose "Git" as the SCM.
+   
+   Provide your repository details (e.g., repository URL and credentials).
+
+   Set the "Script Path" to Jenkinsfile.
+
+   Save the Jenkins project configuration.
+
+Now, when you trigger a build for your Jenkins project, it will execute the steps defined in the Jenkinsfile. The Docker image will be built, and the application will be deployed as a container on Render.com, accessible through port 8080.
+
+
 ## API Documentation
 
 The documentation of the API is made by OpenAPI 3.0 , it shows all the Endpoints of the application
