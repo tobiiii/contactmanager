@@ -14,13 +14,7 @@ import java.util.stream.Collectors;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ContactView {
-
-    private Long id;
-
-    private Date created;
-
-    private Date updated;
+public class ContactDataView {
 
     private String code;
 
@@ -34,21 +28,13 @@ public class ContactView {
 
     private String type;
 
-    private List<CompanyDataView> companies;
-
-    public ContactView(Contact contact) {
-        this.id = contact.getId();
-        this.created = contact.getCreated();
-        this.updated = contact.getUpdated();
+    public ContactDataView(Contact contact) {
         this.code = contact.getCode();
         this.firstName = contact.getFirstName();
         this.lastName = contact.getLastName();
         this.address = contact.getAddress();
         this.tva = contact.getTva();
         this.type = contact.getType().name();
-        this.companies = contact.getCompanies().stream()
-                .map(CompanyDataView::new)
-                .collect(Collectors.toList());
     }
 
 }

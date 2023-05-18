@@ -52,14 +52,4 @@ public abstract class ContactmanagerException extends RuntimeException {
             return errorCode.getMessage();
         }
     }
-
-    public String getMessageWithErrorCode() {
-        if (errorCode == null) {
-            return super.getMessage();
-        } else {
-            return errorCode.getMessageWithErrorCode();
-        }
-    }
-
-
 }

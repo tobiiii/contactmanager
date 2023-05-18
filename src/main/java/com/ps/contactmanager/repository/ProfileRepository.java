@@ -16,7 +16,7 @@ public interface ProfileRepository<T extends Profile> extends JpaRepository<T, L
 
     boolean existsByName(String name);
 
-    @Query("select p from Profile p where  p.code <> 'SUPERADMIN' ORDER BY p.id ASC ")
+    @Query("select p from Profile p ORDER BY p.id ASC ")
     List<ProfileView> findAllOrderByIdDesc ();
 
     Optional<T> findByCode(String code);
